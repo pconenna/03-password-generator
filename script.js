@@ -20,6 +20,7 @@ var hasUpperCase = false;
 var hasNumbers = false;
 var hasSpecialChars = false;
 
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword(); //need to write this
@@ -31,6 +32,7 @@ function writePassword() {
 }
 //doing this all in one function is kind of ugly
 function gatherRequirements(){
+  //make it impossible to mark no for every choice 
   numchars = window.prompt("Choose an amount of characters between 8 and 128.");
   while(numchars < 8 || numchars > 128){
     numchars = window.prompt("Please try again the value must be between 8 and 128.");
@@ -48,9 +50,22 @@ function gatherRequirements(){
 
 function generatePassword(){
   gatherRequirements();
+  var pw = "";
+  var charPool = [];
   
-
-
+  if(hasLowerCase){charPool = charPool.concat(lowerCase)}
+  if(hasUpperCase){charPool = charPool.concat(lowerCase)}
+  if(hasNumbers){charPool = charPool.concat(numbers)}
+  if(hasSpecialChars){charPool = charPool.concat(specialChars)}
+  //  console.log(charPool)
+  for(var i = 0; i < numchars; i++){
+    var randomIndex = Math.floor(Math.random()*charPool.length);
+    var c = charPool[randomIndex]; 
+    pw += c;
+  }
+  console.log(pw);
+  console.log(pw.length);
+  return pw;
 }
 
 
