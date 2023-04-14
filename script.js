@@ -29,13 +29,28 @@ function writePassword() {
   passwordText.value = password;
 
 }
+//doing this all in one function is kind of ugly
+function gatherRequirements(){
+  numchars = window.prompt("Choose an amount of characters between 8 and 128.");
+  while(numchars < 8 || numchars > 128){
+    numchars = window.prompt("Please try again the value must be between 8 and 128.");
+  }
+
+  hasLowerCase = window.confirm("Do you want to use lowercase letters?");
+  
+  hasUpperCase = window.confirm("Do you want to use uppercase letters?");
+
+  hasNumbers = window.confirm("do you want to use numbers?");
+
+  hasSpecialChars = window.confirm("Do you want to use special characters")
+
+} 
 
 function generatePassword(){
-  numchars = window.prompt("Choose an amount of characters between 8 and 128.")
-  while(numchars < 8 || numchars > 128){
-    numchars = window.prompt("Please try again the value must be between 8 and 128.")
-  }
-  hasLowerCase = window.confirm("Do you want to use lowercase letters?")
+  gatherRequirements();
+  
+
+
 }
 
 
